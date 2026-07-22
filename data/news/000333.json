@@ -1,0 +1,24 @@
+[
+  {
+    "doc_id": "000333-NEWS-001",
+    "company_id": "000333",
+    "date": "2025-09-11",
+    "source_type": "news",
+    "title": "标普将美的集团长期发行人信用评级上调至A+",
+    "content": "标普全球评级将美的集团长期发行人信用评级从A上调至A+,反映其持续稳健的财务表现、充裕的现金流以及在家电与ToB业务上的多元化布局。",
+    "source": "美的集团2025年年度报告摘要引述",
+    "url": "https://static.cninfo.com.cn/finalpage/2026-03-31/1225058117.PDF",
+    "tags": ["评级上调", "正面信号"]
+  },
+  {
+    "doc_id": "000333-NEWS-002",
+    "company_id": "000333",
+    "date": "2025-12-26",
+    "source_type": "news",
+    "title": "美的集团副总裁伏拥军辞职生效",
+    "content": "财经媒体报道,美的集团副总裁伏拥军辞职正式生效;此前公司长期担任董事会秘书的江鹏也已于2025年3月底离任,由高书接任,反映公司管理层近期存在一定人事变动。",
+    "source": "新浪财经",
+    "url": "https://finance.sina.com.cn/stock/relnews/hk/2025-12-29/doc-inhemuku4962328.shtml",
+    "tags": ["高管变动"]
+  }
+]

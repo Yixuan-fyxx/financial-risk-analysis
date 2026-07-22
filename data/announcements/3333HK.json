@@ -1,0 +1,35 @@
+[
+  {
+    "doc_id": "3333HK-ANN-001",
+    "company_id": "3333HK",
+    "date": "2023-07-17",
+    "source_type": "announcement",
+    "title": "中国恒大延迟披露2021年度及2022年度报告",
+    "content": "公司延迟两年后于深夜同时发布2021年度及2022年度报告:两年合计净亏损约8120亿元(2021年净亏损6862.2亿元,2022年净亏损1258.1亿元);审计机构上会栢诚(Prism Hong Kong and Shanghai Limited)对2021年度报告出具'无法表示意见',即审计机构认为未能获取充分、适当的审计证据以对财务报表发表意见。",
+    "source": "21财经(21jingji.com)",
+    "url": "https://m.21jingji.com/article/20230718/herald/4ac83b04f7a22a7407f36452acaa568f.html",
+    "tags": ["延迟披露", "审计无法表示意见", "巨额亏损", "高风险信号"]
+  },
+  {
+    "doc_id": "3333HK-ANN-002",
+    "company_id": "3333HK",
+    "date": "2023-09-28",
+    "source_type": "announcement",
+    "title": "中国恒大公告董事长许家印被采取强制措施",
+    "content": "公司公告称董事局主席许家印'因涉嫌违法犯罪,已被依法采取强制措施',公司股票于当日起停牌。",
+    "source": "新华社",
+    "url": "https://www.news.cn/legal/2023-09/28/c_1129892354.htm",
+    "tags": ["实际控制人风险", "停牌", "高风险信号"]
+  },
+  {
+    "doc_id": "3333HK-ANN-003",
+    "company_id": "3333HK",
+    "date": "2024-05-31",
+    "source_type": "announcement",
+    "title": "中国证监会对恒大地产及许家印作出行政处罚",
+    "content": "中国证监会调查认定恒大地产通过虚增收入等方式财务造假(2019年虚增收入约2139.9亿元、2020年虚增约3500亿元,合计接近800亿美元),对恒大地产处以罚款4.18亿元,并对许家印处以顶格罚款并采取终身证券市场禁入措施。",
+    "source": "CNBC",
+    "url": "https://www.cnbc.com/2024/05/31/china-fines-evergrandes-hengda-577-million-for-fraudulent-bond-issuance.html",
+    "tags": ["财务造假", "监管处罚", "高风险信号"]
+  }
+]

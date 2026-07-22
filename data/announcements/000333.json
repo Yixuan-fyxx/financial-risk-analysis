@@ -1,0 +1,57 @@
+[
+  {
+    "doc_id": "000333-ANN-001",
+    "company_id": "000333",
+    "date": "2025-10-30",
+    "source_type": "announcement",
+    "title": "美的集团2025年第三季度报告",
+    "content": "公司发布2025年前三季度报告:营业收入3630.57亿元,同比增长13.82%;归属于母公司净利润378.83亿元,同比增长19.51%;其中2C端稳健增长,2B端(楼宇科技、机器人与自动化等)营收同比增长约18%。",
+    "source": "深交所巨潮资讯网/美的集团公告",
+    "url": "https://finance.sina.com.cn/roll/2025-10-31/doc-infvtrwu8753537.shtml",
+    "tags": ["季度报告", "营收增长", "正面信号"]
+  },
+  {
+    "doc_id": "000333-ANN-002",
+    "company_id": "000333",
+    "date": "2025-12-22",
+    "source_type": "announcement",
+    "title": "关于回购股份注销完成的公告",
+    "content": "公司完成9500万股回购股份的注销手续,本轮回购计划累计回购金额已达上限约100亿元,回购股份注销将相应减少注册资本,提升每股指标。",
+    "source": "美的集团公告(公告编号2025-093)",
+    "url": "https://finance.sina.com.cn/stock/aigc/zjchg/2025-12-22/doc-inhcsmfe9158986.shtml",
+    "tags": ["股份回购", "治理", "正面信号"]
+  },
+  {
+    "doc_id": "000333-ANN-003",
+    "company_id": "000333",
+    "date": "2025-12-31",
+    "source_type": "announcement",
+    "title": "关于收购Carestream International相关资产的公告",
+    "content": "公司宣布收购锐珂医疗(Carestream Health)美国以外业务板块Carestream International,进一步拓展医疗影像业务的国际化布局,交易预计将增厚公司ToB医疗板块收入规模。",
+    "source": "美的集团公告",
+    "url": "https://finance.sina.com.cn/stock/relnews/hk/2026-01-07/doc-inhfmtvu5233142.shtml",
+    "tags": ["并购", "业务拓展"]
+  },
+  {
+    "doc_id": "000333-ANN-004",
+    "company_id": "000333",
+    "date": "2026-03-31",
+    "source_type": "announcement",
+    "title": "美的集团2025年年度报告及利润分配方案",
+    "content": "公司发布2025年年度报告:营业收入4564.52亿元,同比增长12.11%;归属于母公司净利润439.45亿元,同比增长14.03%;资产负债率61.17%,较上年62.33%略有下降。同时披露2025年度利润分配方案,每10股派43元,全年现金分红合计323.6亿元,创历史新高。",
+    "source": "深交所巨潮资讯网(公告编号2026-019)",
+    "url": "https://static.cninfo.com.cn/finalpage/2026-03-31/1225058117.PDF",
+    "tags": ["年度报告", "分红", "资产负债率下降", "正面信号"]
+  },
+  {
+    "doc_id": "000333-ANN-005",
+    "company_id": "000333",
+    "date": "2025-11-18",
+    "source_type": "announcement",
+    "title": "关于实施2025年中期利润分配的公告",
+    "content": "公司实施首次中期分红,每10股派发现金红利5元,合计派发现金红利约34.48亿元,体现公司在营收和利润双增长背景下现金分红能力较强。",
+    "source": "美的集团公告",
+    "url": "https://www.21jingji.com/article/20260403/herald/e447807fe78cc62a4796166db2ec1db4.html",
+    "tags": ["中期分红", "正面信号"]
+  }
+]

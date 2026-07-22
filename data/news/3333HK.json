@@ -1,0 +1,57 @@
+[
+  {
+    "doc_id": "3333HK-NEWS-001",
+    "company_id": "3333HK",
+    "date": "2021-12-09",
+    "source_type": "news",
+    "title": "中国恒大境外债券首次实质性违约",
+    "content": "恒大未能在30天宽限期内支付8250万美元境外债券票息,构成其首次境外公开债券违约,并触发约190亿美元境外债券的交叉违约条款。",
+    "source": "彭博社(Bloomberg)",
+    "url": "https://www.bloomberg.com/news/articles/2021-12-09/evergrande-defaults-for-first-time-as-china-debt-strains-spread",
+    "tags": ["债券违约", "高风险信号"]
+  },
+  {
+    "doc_id": "3333HK-NEWS-002",
+    "company_id": "3333HK",
+    "date": "2021-12-09",
+    "source_type": "news",
+    "title": "惠誉将中国恒大信用评级下调至'限制性违约'",
+    "content": "惠誉评级因恒大未能支付到期票息,将其评级下调至'限制性违约'(Restricted Default);标普随后也将其下调至'选择性违约',并于12月17日应恒大要求撤销评级。",
+    "source": "彭博社(Bloomberg)",
+    "url": "https://www.bloomberg.com/news/articles/2021-12-17/evergrande-declared-in-default-by-s-p-for-failed-coupon-payments",
+    "tags": ["评级下调", "高风险信号"]
+  },
+  {
+    "doc_id": "3333HK-NEWS-003",
+    "company_id": "3333HK",
+    "date": "2022-06-24",
+    "source_type": "news",
+    "title": "债权人向香港高等法院提交对恒大的清盘呈请",
+    "content": "债权人Top Shine Global就一笔约8.625亿港元(约1.09亿美元)的债务,向香港高等法院提交对中国恒大的清盘呈请,这是已知的首份针对恒大集团的清盘呈请;恒大表示将提出反对。",
+    "source": "环球时报(Global Times)",
+    "url": "https://www.globaltimes.cn/page/202206/1269195.shtml",
+    "tags": ["清盘呈请", "诉讼", "高风险信号"]
+  },
+  {
+    "doc_id": "3333HK-NEWS-004",
+    "company_id": "3333HK",
+    "date": "2024-01-29",
+    "source_type": "news",
+    "title": "香港高等法院颁布对中国恒大的清盘令",
+    "content": "香港高等法院法官陈静芬颁布对中国恒大集团的清盘令,认定公司已无力偿债且未能提出可行的重组方案(涉及负债规模约3000-3250亿美元);安永(Alvarez & Marsal)的Edward Middleton与Tiffany Wong被委任为清盘人,公司股票自当日起停牌。",
+    "source": "NPR / 彭博社",
+    "url": "https://www.npr.org/2024/01/29/1227522487/hong-kong-court-orders-chinas-evergrande-which-owes-300-billion-to-liquidate",
+    "tags": ["清盘令", "停牌", "司法清算", "高风险信号"]
+  },
+  {
+    "doc_id": "3333HK-NEWS-005",
+    "company_id": "3333HK",
+    "date": "2025-08-25",
+    "source_type": "news",
+    "title": "中国恒大正式被香港交易所取消上市地位",
+    "content": "由于股票自2024年1月29日清盘令颁布后连续停牌满18个月仍未能复牌,港交所依据主板退市规则正式取消中国恒大的上市地位,公司未提出上诉。",
+    "source": "NPR",
+    "url": "https://www.npr.org/2025/08/25/g-s1-85108/evergrandes-delisting-in-hong-kong-key-facts-to-know",
+    "tags": ["强制退市", "高风险信号"]
+  }
+]
