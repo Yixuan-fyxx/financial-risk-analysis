@@ -1,0 +1,48 @@
+# Stage 2: merge the Stage-1 SFT model back with the untouched base model,
+# to claw back general capability that narrow-domain SFT tends to erode.
+#
+# `run_merge.py` reads this file for its own bookkeeping (paths) and passes
+# `mergekit_config` through to mergekit verbatim (mergekit's own YAML schema
+# -- see https://github.com/arcee-ai/mergekit). Default method is `linear`
+# (a straightforward base/SFT weight average — the "model soup" approach);
+# `ties` and `slerp` are left commented as alternatives worth comparing.
+
+sft_model_dir: training/outputs/stage1_sft            # LoRA adapter dir produced by train_sft.py
+sft_merged_dir: training/outputs/stage1_sft_merged     # full weights after peft merge_and_unload (intermediate)
+output_dir: training/outputs/stage2_merged             # final merged full model
+
+mergekit_config:
+  merge_method: linear
+  dtype: bfloat16
+  models:
+    - model: Qwen/Qwen2.5-1.5B              # untouched base — must match configs/sft.yaml's base model
+      parameters:
+        weight: 0.5
+    - model: training/outputs/stage1_sft_merged
+      parameters:
+        weight: 0.5
+
+# Alternative: TIES (sparsify + sign-consensus merge, better at avoiding
+# interference when merging more than 2 models / larger deltas):
+# mergekit_config:
+#   merge_method: ties
+#   base_model: Qwen/Qwen2.5-1.5B
+#   dtype: bfloat16
+#   models:
+#     - model: training/outputs/stage1_sft_merged
+#       parameters:
+#         density: 0.5
+#         weight: 1.0
+#   parameters:
+#     normalize: true
+
+# Alternative: SLERP (spherical interpolation, only supports exactly 2 models):
+# mergekit_config:
+#   merge_method: slerp
+#   base_model: Qwen/Qwen2.5-1.5B
+#   dtype: bfloat16
+#   models:
+#     - model: Qwen/Qwen2.5-1.5B
+#     - model: training/outputs/stage1_sft_merged
+#   parameters:
+#     t: 0.5

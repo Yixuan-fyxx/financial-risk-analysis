@@ -1,0 +1,26 @@
+# Stage 3: DPO on the Stage-2 merged model, using preference pairs built by
+# training/data_gen/build_preference_dataset.py from report_verifier scores.
+model_name_or_path: training/outputs/stage2_merged
+dataset_path: training/datasets/dpo_pairs.jsonl
+output_dir: training/outputs/stage3_dpo
+max_seq_length: 2048
+max_prompt_length: 1200
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+train:
+  beta: 0.1                 # DPO temperature; higher = stays closer to the reference (Stage-2) policy
+  num_train_epochs: 2
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 8
+  learning_rate: 5.0e-5
+  lr_scheduler_type: cosine
+  warmup_ratio: 0.1
+  logging_steps: 5
+  save_strategy: epoch
+  bf16: true
+  seed: 0

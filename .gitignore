@@ -4,3 +4,9 @@ __pycache__/
 *.pyc
 .env
 .pytest_cache/
+
+# Training pipeline: large generated datasets / model checkpoints, regenerate via the
+# training/data_gen and training/stageN_* scripts rather than committing them. See
+# training/README.md. Small review samples in training/data_gen/samples/ are kept.
+training/datasets/*.jsonl
+training/outputs/

@@ -1,0 +1,8 @@
+{"prompt": "1+1=", "reference": "2"}
+{"prompt": "中国的首都是", "reference": "北京。"}
+{"prompt": "把下面这句话翻译成英文:你好,很高兴认识你。", "reference": "Hello, nice to meet you."}
+{"prompt": "请用一句话解释什么是光合作用。", "reference": "光合作用是植物利用阳光、水和二氧化碳制造有机物并释放氧气的过程。"}
+{"prompt": "一年有多少个月?", "reference": "一年有12个月。"}
+{"prompt": "请写一句关于秋天的诗意描述。", "reference": "秋风送爽,落叶纷飞,大地披上了金黄色的外衣。"}
+{"prompt": "水的化学式是什么?", "reference": "水的化学式是H2O。"}
+{"prompt": "请简单介绍一下你自己能做什么。", "reference": "我是一个可以回答问题、完成写作和分析任务的助手。"}

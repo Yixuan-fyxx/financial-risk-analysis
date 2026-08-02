@@ -105,9 +105,15 @@ src/fin_risk/
   rag/retriever.py          TF-IDF + 时效性检索
   prompts/templates.py      v1-v4 Prompt 模板与迭代记录
   llm/client.py             Mock / Anthropic 客户端
+  agent/tools.py            把业务函数封装成带 JSON Schema 的工具(供下面的训练流程使用)
   pipeline.py               端到端编排
 examples/run_demo.py       CLI 演示入口
-tests/                     35 个单元测试,覆盖指标计算边界情况、检索排序、模板结构、端到端报告生成
+tests/                     44 个单元测试,覆盖指标计算边界情况、检索排序、模板结构、端到端报告生成、工具封装
 docs/prompt_versions.md    Prompt 迭代详细记录与真实样例输出
 data/                      真实公司财务数据 + 公告 + 新闻语料
+training/                  第二条主线:预训练模型→SFT→Model Merging→RL(DPO)→Agent能力训练全流程,见下文
 ```
+
+## 训练流程:预训练模型 → SFT → Model Merging → RL → Agent 能力训练
+
+在上面的 Prompt/RAG 原型之上,`training/` 目录完整实现了一遍现代 LLM 对齐流程:用 Qwen2.5-1.5B 预训练 base 模型做 LoRA SFT 学会生成本项目的结构化风险报告,用 mergekit 把 SFT 模型与原始 base 合并以防止过拟合/保留通用能力,用规则验证器构造偏好对做 DPO 偏好优化,最后训练模型学会自主调用 `risk_scoring`/`rag` 等真实业务函数完成多步任务编排(替代原本硬编码的检索逻辑)。全部数据生成、训练脚本、评测工具已经就绪;实际训练需要 GPU,详见 [`training/README.md`](training/README.md)(含云 GPU 租用指南、逐阶段命令、预期产出)。
