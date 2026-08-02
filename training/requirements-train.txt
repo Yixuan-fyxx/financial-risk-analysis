@@ -2,7 +2,10 @@
 # Install on the rented GPU box, not necessarily locally:
 #   pip install -r training/requirements-train.txt
 torch>=2.3
-transformers>=4.45
+# transformers 5.0.0 removed AutoModelForVision2Seq / MODEL_FOR_VISION_2_SEQ_MAPPING_NAMES,
+# which the installed trl's DPOTrainer still imports at module load time - stay on 4.x
+# until trl catches up.
+transformers>=4.45,<5.0
 datasets>=2.20
 peft>=0.13
 trl>=0.11
