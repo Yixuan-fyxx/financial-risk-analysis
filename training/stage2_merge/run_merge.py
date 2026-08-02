@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import argparse
 import subprocess
+import sys
 import tempfile
 from pathlib import Path
 
@@ -29,13 +30,51 @@ import yaml
 from training.common.config import load_yaml
 from training.common.merge_utils import merge_lora_adapter
 
+# Workaround for https://github.com/arcee-ai/mergekit/issues/681 (open, unfixed as of
+# this writing): several of mergekit's pydantic models reference `torch` in forward-ref
+# type hints that fail to resolve on first use ("`ConfiguredModuleArchitecture`/
+# `ConfiguredArchitectureInfo` is not fully defined"), regardless of the pydantic 2.10.x
+# patch version. We can't patch this from our own process because `mergekit-yaml` runs
+# as a separate subprocess, so instead of invoking that console script we run an inline
+# snippet that imports torch and force-rebuilds every mergekit pydantic model *before*
+# mergekit's own code tries to instantiate one for the first time (which is what
+# triggers the crash), then calls the same entry point the console script does.
+_MERGEKIT_PATCH = """
+import importlib
+import sys
+
+import pydantic
+import torch
+
+def _rebuild(mod_name):
+    try:
+        mod = importlib.import_module(mod_name)
+    except ImportError:
+        return
+    for name in dir(mod):
+        obj = getattr(mod, name, None)
+        if isinstance(obj, type) and issubclass(obj, pydantic.BaseModel):
+            try:
+                obj.model_rebuild(force=True, _types_namespace={"torch": torch})
+            except Exception:
+                pass
+
+for _mod_name in ("mergekit.architecture", "mergekit.plan", "mergekit.merge_methods.base", "mergekit.config"):
+    _rebuild(_mod_name)
+
+config_path, output_dir = sys.argv[1], sys.argv[2]
+sys.argv = ["mergekit-yaml", config_path, output_dir]
+from mergekit.scripts.run_yaml import main
+main()
+"""
+
 
 def run_mergekit(mergekit_config: dict, output_dir: str) -> None:
     with tempfile.NamedTemporaryFile("w", suffix=".yaml", delete=False, encoding="utf-8") as fh:
         yaml.safe_dump(mergekit_config, fh, allow_unicode=True)
         config_path = fh.name
     Path(output_dir).mkdir(parents=True, exist_ok=True)
-    subprocess.run(["mergekit-yaml", config_path, output_dir], check=True)
+    subprocess.run([sys.executable, "-c", _MERGEKIT_PATCH, config_path, output_dir], check=True)
     print(f"mergekit ({mergekit_config['merge_method']}) output -> {output_dir}")
 
 

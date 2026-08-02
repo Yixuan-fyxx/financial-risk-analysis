@@ -10,8 +10,7 @@ accelerate>=0.34
 mergekit>=0.0.5
 pyyaml>=6.0
 
-# mergekit's pydantic models (e.g. ConfiguredModuleArchitecture) fail to
-# model_rebuild() under pydantic>=2.10's stricter forward-ref resolution
-# ("`ConfiguredModuleArchitecture` is not fully defined") - pin below it
-# until mergekit ships a fix.
-pydantic<2.10
+# Match mergekit's own pin (its pyproject.toml requires pydantic~=2.10.6).
+# Older 2.9.x breaks even earlier than the bug below, so don't downgrade
+# past this.
+pydantic~=2.10.6
