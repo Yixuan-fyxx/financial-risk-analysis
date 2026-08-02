@@ -14,8 +14,11 @@ from __future__ import annotations
 from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
+from training.common.config import patch_tokenizer_extra_special_tokens_list_bug
+
 
 def merge_lora_adapter(base_model_path: str, adapter_dir: str, out_dir: str) -> None:
+    patch_tokenizer_extra_special_tokens_list_bug()
     tokenizer = AutoTokenizer.from_pretrained(adapter_dir)
     base_model = AutoModelForCausalLM.from_pretrained(base_model_path, torch_dtype="auto")
     model = PeftModel.from_pretrained(base_model, adapter_dir)

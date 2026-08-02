@@ -92,6 +92,10 @@ def _build_hf_generate_fn(model_path: str, max_new_tokens: int = 1200) -> Genera
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer, StoppingCriteria, StoppingCriteriaList
 
+    from training.common.config import patch_tokenizer_extra_special_tokens_list_bug
+
+    patch_tokenizer_extra_special_tokens_list_bug()
+
     class StopOnSubstring(StoppingCriteria):
         def __init__(self, tokenizer, prompt_len: int, stop_string: str):
             self.tokenizer = tokenizer

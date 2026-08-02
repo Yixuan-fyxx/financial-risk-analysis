@@ -24,11 +24,13 @@ import json
 
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
+from training.common.config import patch_tokenizer_extra_special_tokens_list_bug
 from training.data_gen.build_preference_dataset import build_prompts
 from training.eval.scoring import domain_verifier_scores, general_capability_loss, summarize
 
 
 def evaluate_checkpoint(label: str, model_path: str, domain_prompts: list[dict]) -> dict:
+    patch_tokenizer_extra_special_tokens_list_bug()
     tokenizer = AutoTokenizer.from_pretrained(model_path)
     model = AutoModelForCausalLM.from_pretrained(model_path, torch_dtype="auto", device_map="auto")
     model.eval()

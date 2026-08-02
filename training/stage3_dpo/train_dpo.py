@@ -24,7 +24,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from trl import DPOConfig, DPOTrainer
 
 from training.common.chat_format import render_prompt
-from training.common.config import load_yaml
+from training.common.config import load_yaml, patch_tokenizer_extra_special_tokens_list_bug
 from training.common.merge_utils import merge_lora_adapter
 
 
@@ -34,6 +34,7 @@ def main() -> None:
     args = parser.parse_args()
     cfg = load_yaml(args.config)
 
+    patch_tokenizer_extra_special_tokens_list_bug()
     tokenizer = AutoTokenizer.from_pretrained(cfg["model_name_or_path"])
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token

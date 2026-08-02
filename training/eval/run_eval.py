@@ -92,6 +92,9 @@ def format_table(results: list[dict]) -> str:
 def evaluate_checkpoint(label: str, model_path: str, domain_prompts: list[dict], run_agent_eval: bool) -> dict:
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
+    from training.common.config import patch_tokenizer_extra_special_tokens_list_bug
+
+    patch_tokenizer_extra_special_tokens_list_bug()
     tokenizer = AutoTokenizer.from_pretrained(model_path)
     model = AutoModelForCausalLM.from_pretrained(model_path, torch_dtype="auto", device_map="auto")
     model.eval()

@@ -14,9 +14,11 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from trl import SFTConfig, SFTTrainer
 
 from training.common.chat_format import render_messages
+from training.common.config import patch_tokenizer_extra_special_tokens_list_bug
 
 
 def run_lora_sft(cfg: dict) -> None:
+    patch_tokenizer_extra_special_tokens_list_bug()
     tokenizer = AutoTokenizer.from_pretrained(cfg["model_name_or_path"])
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token

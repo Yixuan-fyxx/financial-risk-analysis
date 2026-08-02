@@ -111,6 +111,9 @@ def _load_hf_generate_fn(model_path: str, max_new_tokens: int = 900, temperature
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
+    from training.common.config import patch_tokenizer_extra_special_tokens_list_bug
+
+    patch_tokenizer_extra_special_tokens_list_bug()
     tokenizer = AutoTokenizer.from_pretrained(model_path)
     model = AutoModelForCausalLM.from_pretrained(model_path, torch_dtype="auto", device_map="auto")
 
