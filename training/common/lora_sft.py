@@ -62,6 +62,8 @@ def run_lora_sft(cfg: dict) -> None:
         bf16=train_cfg["bf16"],
         seed=train_cfg["seed"],
         report_to=[],
+        gradient_checkpointing=True,
+        gradient_checkpointing_kwargs={"use_reentrant": False},
         **{max_len_kwarg: cfg["max_seq_length"]},
     )
 
