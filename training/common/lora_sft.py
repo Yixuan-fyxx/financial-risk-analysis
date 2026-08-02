@@ -6,6 +6,8 @@ checkpoints, so the loop itself isn't duplicated between them.
 
 from __future__ import annotations
 
+import inspect
+
 from datasets import load_dataset
 from peft import LoraConfig
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -39,9 +41,14 @@ def run_lora_sft(cfg: dict) -> None:
     )
 
     train_cfg = cfg["train"]
+    # trl renamed SFTConfig's sequence-length arg (max_seq_length -> max_length) in
+    # newer releases; requirements-train.txt pins trl>=0.11 with no upper bound, so
+    # detect whichever name the installed version accepts instead of hardcoding one.
+    max_len_kwarg = (
+        "max_length" if "max_length" in inspect.signature(SFTConfig.__init__).parameters else "max_seq_length"
+    )
     sft_config = SFTConfig(
         output_dir=cfg["output_dir"],
-        max_seq_length=cfg["max_seq_length"],
         dataset_text_field="text",
         packing=False,
         num_train_epochs=train_cfg["num_train_epochs"],
@@ -55,6 +62,7 @@ def run_lora_sft(cfg: dict) -> None:
         bf16=train_cfg["bf16"],
         seed=train_cfg["seed"],
         report_to=[],
+        **{max_len_kwarg: cfg["max_seq_length"]},
     )
 
     trainer = SFTTrainer(
