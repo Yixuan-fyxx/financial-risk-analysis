@@ -79,6 +79,10 @@ def main() -> None:
         bf16=train_cfg["bf16"],
         seed=train_cfg["seed"],
         report_to=[],
+        gradient_checkpointing=True,
+        gradient_checkpointing_kwargs={"use_reentrant": False},
+        precompute_ref_log_probs=True,  # cache the adapter-disabled reference pass once, up front,
+        # instead of re-running it interleaved with the policy's backward pass every step
     )
 
     trainer = DPOTrainer(
